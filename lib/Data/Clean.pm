@@ -19,7 +19,14 @@ sub clean_value {
             $_ = undef
         },
         array => sub {
-            $_ = [];
+            my $data = $_;
+
+            if( grep { ref $_ eq 'HASH' } @{$data} ) {
+                $_ = $data;
+            }
+            else {
+                $_ = [];
+            }
         },
     );
 
