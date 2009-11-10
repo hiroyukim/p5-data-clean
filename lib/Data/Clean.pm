@@ -22,7 +22,7 @@ sub clean_value {
             my $data = $_;
 
             if( grep { ref $_ eq 'HASH' } @{$data} ) {
-                $_ = $data;
+                $_ = [$data->[0]];
             }
             else {
                 $_ = [];
